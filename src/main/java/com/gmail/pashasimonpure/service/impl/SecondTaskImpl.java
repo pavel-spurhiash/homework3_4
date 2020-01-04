@@ -24,7 +24,7 @@ public class SecondTaskImpl implements HomeWorkService {
 
         CarService carService = new CarServiceImpl();
         List<Car> carList = generateCars(10);
-        Integer randomCapacity = 10;//RandomUtil.getRandomInt();
+        Integer randomCapacity = RandomUtil.getRandomInt();
 
         carService.addAll(carList);
 
