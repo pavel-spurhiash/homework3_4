@@ -30,14 +30,13 @@ public class SecondTaskImpl implements HomeWorkService {
 
         carList = carService.findAllByEngineCapacity(randomCapacity);
 
-        logger.debug("Cars with engine capacity " + randomCapacity + ": ");
-
         if (carList.isEmpty()) {
-            logger.debug("empty");
-        }
-
-        for (Car car : carList) {
-            logger.info(car);
+            logger.debug("No cars with engine capacity "+ randomCapacity);
+        } else {
+            logger.debug("Cars with engine capacity " + randomCapacity + ": ");
+            for (Car car : carList) {
+                logger.info(car);
+            }
         }
 
         carService.deleteAllByMinEngineCapacity();
@@ -51,7 +50,7 @@ public class SecondTaskImpl implements HomeWorkService {
     private List<Car> generateCars(int count) {
         List<Car> carList = new ArrayList<>();
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < count; i++) {
             Car car = Car.newBuilder()
                     .name("Car#" + RandomUtil.getRandomIntBetween(100, 999))
                     .carModel(CarModelEnum.values()[new Random().nextInt(CarModelEnum.values().length)])
@@ -59,8 +58,8 @@ public class SecondTaskImpl implements HomeWorkService {
                     .build();
             carList.add(car);
         }
-        return carList;
 
+        return carList;
     }
 
 }

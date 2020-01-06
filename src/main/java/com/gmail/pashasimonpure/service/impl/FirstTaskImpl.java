@@ -35,7 +35,6 @@ public class FirstTaskImpl implements HomeWorkService {
                 logger.info(command);
             }
 
-
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
             throw new IllegalStateException("can't create " + INPUT_FILE_NAME);
@@ -77,4 +76,5 @@ public class FirstTaskImpl implements HomeWorkService {
 
         return arr;
     }
+
 }

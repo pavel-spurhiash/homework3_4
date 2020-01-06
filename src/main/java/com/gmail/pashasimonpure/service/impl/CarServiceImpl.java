@@ -62,11 +62,11 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public List<Car> findAllByEngineCapacity(int searchEngineCapacity) {
+    public List<Car> findAllByEngineCapacity(int engineCapacity) {
         try (Connection connection = connectionRepository.getConnection()) {
             connection.setAutoCommit(false);
             try {
-                List<Car> carList = carRepository.findAllByEngineCapacity(connection, searchEngineCapacity);
+                List<Car> carList = carRepository.findAllByEngineCapacity(connection, engineCapacity);
                 connection.commit();
                 return carList;
             } catch (SQLException e) {
@@ -99,14 +99,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public int getCountByEngineCapacity(int searchEngineCapacity) {
+    public int getCountByEngineCapacity(int engineCapacity) {
 
         int count = 0;
 
         try (Connection connection = connectionRepository.getConnection()) {
             connection.setAutoCommit(false);
             try {
-                count = carRepository.getCountByEngineCapacity(connection, searchEngineCapacity);
+                count = carRepository.getCountByEngineCapacity(connection, engineCapacity);
                 connection.commit();
             } catch (SQLException e) {
                 connection.rollback();
@@ -120,14 +120,14 @@ public class CarServiceImpl implements CarService {
     }
 
     @Override
-    public int updateTitleByEngineCapacity(int searchEngineCapacity, String newName) {
+    public int updateTitleByEngineCapacity(int engineCapacity, String newName) {
 
         int affectedRows = 0;
 
         try (Connection connection = connectionRepository.getConnection()) {
             connection.setAutoCommit(false);
             try {
-                affectedRows = carRepository.updateTitleByEngineCapacity(connection, searchEngineCapacity, newName);
+                affectedRows = carRepository.updateTitleByEngineCapacity(connection, engineCapacity, newName);
                 connection.commit();
                 return affectedRows;
             } catch (SQLException e) {

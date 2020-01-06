@@ -15,14 +15,14 @@ public class ConfigUtil {
     private boolean loaded = false;
 
     public ConfigUtil(String configPath) {
-        this.properties = new Properties();
+        properties = new Properties();
         this.configPath = configPath;
     }
 
     private void readConfig() {
-        try (InputStream propertiesStream = getClass().getClassLoader().getResourceAsStream(this.configPath)) {
-            this.properties.load(propertiesStream);
-            this.loaded = true;
+        try (InputStream propertiesStream = getClass().getClassLoader().getResourceAsStream(configPath)) {
+            properties.load(propertiesStream);
+            loaded = true;
         } catch (IOException e) {
             logger.error(e.getMessage(), e);
             throw new IllegalArgumentException("config read error: bad config path");
@@ -34,11 +34,11 @@ public class ConfigUtil {
 
     public String getProperty(String name) {
 
-        if (this.loaded == false) {
+        if (loaded == false) {
             readConfig();
         }
 
-        return this.properties.getProperty(name);
+        return properties.getProperty(name);
     }
 
 }

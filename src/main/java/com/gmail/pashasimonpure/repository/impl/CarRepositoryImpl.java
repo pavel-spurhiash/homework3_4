@@ -101,14 +101,14 @@ public class CarRepositoryImpl implements CarRepository {
     }
 
     @Override
-    public int updateTitleByEngineCapacity(Connection connection, int searchEngineCapacity, String newName) throws SQLException {
+    public int updateTitleByEngineCapacity(Connection connection, int engineCapacity, String newName) throws SQLException {
 
         String sql = "UPDATE car SET name = ? WHERE engine_capacity = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setString(1,newName);
-            preparedStatement.setInt(2, searchEngineCapacity);
+            preparedStatement.setString(1, newName);
+            preparedStatement.setInt(2, engineCapacity);
 
             Integer affectedRows = preparedStatement.executeUpdate();
             if (affectedRows == 0) {
