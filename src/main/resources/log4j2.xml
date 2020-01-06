@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="consoleLogger" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %c %p [%t] %m%n"/>
+        </Console>
+        <File name="fileLogger" fileName="log/logFile.log">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} %c %p [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="fileLogger" level="all" additivity="false">
+            <AppenderRef ref="fileLogger"/>
+        </Logger>
+        <Logger name="consoleLogger" level="all" additivity="false">
+            <AppenderRef ref="consoleLogger"/>
+        </Logger>
+        <Root level="all" >
+            <AppenderRef ref="consoleLogger"/>
+        </Root>
+    </Loggers>
+</Configuration>

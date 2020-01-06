@@ -1,0 +1,14 @@
+CREATE DATABASE IF NOT EXISTS `jd2_homework3-4`;
+USE jd2_homework3-4;
+CREATE TABLE IF NOT EXISTS film(name VARCHAR(255) NOT NULL PRIMARY KEY, duration INT, price DEC);
+INSERT INTO film (name, duration, price) VALUES
+('Awesome Film', 60, 5.),
+('Jackie Chan', 90, 10.),
+('Interstellar', 120, 10.),
+('Witcher', 60, 15.),
+('Star Wars', 120, 10.);
+SELECT MAX(price) FROM film;
+DELETE FROM film ORDER BY price LIMIT 1;
+UPDATE film SET name = "Hot film!" ORDER BY price DESC LIMIT 1;
+DROP TABLE film;
+DROP DATABASE `jd2_homework3-4`;
